@@ -1,0 +1,27 @@
+{
+  "name": "reactjs_learning",
+  "version": "1.0.0",
+  "description": "Learning React",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "start": "rm -rf .parcel-cache && parcel"
+  },
+  "author": "Vikash Rai",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.10.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.17.0"
+  }
+}

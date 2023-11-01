@@ -1,0 +1,267 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+.nav-items {
+    display: flex;
+    gap: 50px;
+}
+
+
+.nav-items li {
+    list-style: none;
+    padding: 10px;
+}
+
+.nav-items li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.li-items span {
+    margin-right: 5px;
+    font-size: 3erm;
+}
+
+.logo-div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-div img {
+    height: 100px;
+}
+
+
+/* BODY */
+
+.shimmer-cards-container {
+    display: grid;
+    padding: 0px 20px;
+    margin: 10px;
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.shimmer-card {
+    padding: 10px;
+    margin: 10px;
+    width: auto;
+    height: 400px;
+    background-color: rgb(243, 248, 248);
+}
+
+
+.body-nav-item-container {
+    display: flex;
+    align-items: center;
+}
+
+.body-nav-item-container * {
+    margin: 1px;
+    padding: 10px;
+}
+
+
+.filter-btn {
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.restaurants-card-container {
+    display: grid;
+    /* padding: 0px 20px; */
+    margin: 10px;
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+
+}
+
+.res-card {
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    height: auto;
+    background-color: rgb(243, 248, 248);
+
+}
+
+.res-card:hover {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.res-card img {
+    height: 200px;
+    width: 100%;
+}
+
+#res-link {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+/* -----------------------CART-------------------------- */
+
+.cart {
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    /* justify-items: center; */
+    /* justify-content: space-evenly; */
+}
+
+.address-payment-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* --------------------------Delivery Adderess Component -------------------*/
+
+.adderess-container {
+    background-color: aliceblue;
+    padding: 20px;
+    margin: 20px;
+    /* width: 100%; */
+}
+
+#change-adderess-btn {
+    background-color: transparent;
+    border: none;
+    color: orange;
+    font-weight: bolder;
+    padding: 0;
+}
+
+
+
+
+/* --------------------------Payment Component------------------------------ */
+
+.payment-container {
+    background-color: aliceblue;
+    padding: 20px;
+    margin: 20px;
+}
+
+#ptc-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: greenyellow;
+    border: none;
+}
+
+
+
+/* ---------------------------restaurant_dishes_bill Component--------------- */
+
+
+
+.cart-detail-container {
+    background-color: aliceblue;
+    margin: 20px;
+    padding: 20px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+/* __________Res Details component___________ */
+
+.res-detail-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    margin: 0px;
+    padding: 0px;
+}
+
+.res-image img {
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    /* margin: 10px; */
+}
+
+
+
+#res-title h3 {
+    margin: 0px;
+}
+
+
+/* _________ dish card container__________*/
+
+
+.dishcard-container {
+    width: 100%;
+    height: 400px;
+    /* text-wrap: nowrap; */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    margin-top: 10px;
+    /* padding: 10px; */
+    border-bottom: 5px solid black;
+    margin-bottom: 10px;
+}
+
+
+/* _________________Dish Card_______ */
+
+.dish-card {
+    display: flex;
+    align-items: start;
+    /* justify-content: center; */
+
+    gap: 10px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.food-indicator {
+    height: 15px;
+    width: q5px;
+    border: 2px solid green;
+    /* border-radius: 50%; */
+}
+
+#circle {
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+.quantity-controller {
+    text-wrap: nowrap;
+}
+
+
+/* ---------------------------restaurant_dishes_bill Component--------------- */
