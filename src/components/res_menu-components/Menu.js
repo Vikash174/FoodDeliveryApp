@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Shimmer from '../homepage_components/Shimmer';
 import { MENU_URL } from '../../utils/constant';
+import CategoryAccordion from './CategoryAccordion';
+import RestaurantDetailsHeader from './RestaurantDetailsHeader';
 
 const Menu = () => {
   const [menuData, setMenuData] = useState(null);
   const params = useParams();
-  console.log(params);
+
+  // console.log(params);
   useEffect(() => {
     fetchMenu();
   }, []);
@@ -18,16 +21,23 @@ const Menu = () => {
     const json = await data.json();
 
     setMenuData(json);
-    console.log(json);
+    // console.log(json);
   };
 
   if (menuData === null) return <Shimmer />;
 
-  const { name, city } = menuData?.data?.cards[0]?.card?.card?.info;
-
+  const accordionsList =
+    menuData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  // console.log(accordionsList);
   return (
-    <div>
-      <h1>{name}</h1>
+    <div className="menu-container">
+      <RestaurantDetailsHeader menuData={menuData} />
+      {accordionsList.map((accordion) => {
+        if (accordion.card.card.title) {
+          return <CategoryAccordion accordionData={accordion} />;
+        }
+      })}
+      {/* <h1>{name}</h1>
       <h2>{city}</h2>
       <ul>
         <li>Item 1</li>
@@ -36,7 +46,7 @@ const Menu = () => {
         <li>Item 4</li>
         <li>Item 5</li>
         <li>Item 6</li>
-      </ul>
+      </ul> */}
     </div>
   );
 };

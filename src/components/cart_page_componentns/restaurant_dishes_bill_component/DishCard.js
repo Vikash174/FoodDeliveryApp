@@ -9,18 +9,24 @@ const DishCard = () => {
   );
 };
 
-const FoodTypeIndicator = () => {
-  return (
-    <div className="food-indicator">
-      <div id="circle"></div>
+export const FoodTypeIndicator = (props) => {
+  const { isVeg } = props;
+
+  return isVeg === 1 ? (
+    <div className="food-indicator vegOuterDiv">
+      <div id="circle" className="vegInnerCircle"></div>
+    </div>
+  ) : (
+    <div className="food-indicator nonVegOuterDiv">
+      <div id="circle" className="nonVegInnerCircle"></div>
     </div>
   );
 };
-const DishName = () => {
-  return <span> Chilli CHees Cheese Max Fries</span>;
+export const DishName = (props) => {
+  return <span> {props.title}</span>;
 };
 
-const QuantityController = () => {
+export const QuantityController = () => {
   return (
     <div className="quantity-controller">
       <button>-</button>
