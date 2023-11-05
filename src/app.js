@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/homepage_components/Header';
 import Body from './components/homepage_components/Body';
-import Cart from './components/cart_page_componentns/Cart';
+// import Cart from './components/cart_page_componentns/Cart';
 import Error from './components/error_components/Error';
 import Help from './components/help_page_components/Help';
 import Menu from './components/res_menu-components/Menu';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+
+const Cart = lazy(() => import('./components/cart_page_componentns/Cart'));
+const Menu = lazy(() => import('./components/res_menu-components/Menu'));
 
 const AppLayout = () => {
   return (
@@ -29,7 +32,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/cart',
-        element: <Cart />
+        element: (
+          <Suspense fallback={<h1>Loading........</h1>}>
+            {' '}
+            <Cart />
+          </Suspense>
+          // <Cart />
+        )
       },
       {
         path: '/help',
@@ -37,7 +46,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/restaurants/:id',
-        element: <Menu />
+        element: (
+          <Suspense fallback={<h1>Loading.....</h1>}>
+            {' '}
+            <Menu />
+          </Suspense>
+        )
       }
     ],
     errorElement: <Error />

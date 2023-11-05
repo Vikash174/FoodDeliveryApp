@@ -4,11 +4,15 @@ import {
   faIndianRupeeSign,
   faStar
 } from '@fortawesome/free-solid-svg-icons';
+import { VegOnly } from './Menu.js';
+import { useState } from 'react';
 
 const RestaurantDetailsHeader = (props) => {
   const { menuData } = props;
-  console.log(menuData?.data?.cards[0]?.card?.card?.info);
-  console.log(menuData?.data?.cards[0]?.card?.card?.info);
+  const [accordionsList, setAccordionList] = useState(props.accordionsList);
+
+  // console.log(menuData?.data?.cards[0]?.card?.card?.info);
+  // console.log(menuData?.data?.cards[2].groupedCard?.cardGroupMap?.REGULAR);
   const {
     name,
     cuisines,
@@ -80,19 +84,6 @@ const ResMetaData = (props) => {
         <FontAwesomeIcon icon={faIndianRupeeSign} />{' '}
         {costForTwoMessage.substring(1, costForTwoMessage.length)}
       </span>
-    </div>
-  );
-};
-
-const VegOnly = () => {
-  return (
-    <div className="veg-only-switch-container">
-      <p>Veg Only</p>
-      <label className="switch">
-        <input type="checkbox" />
-        <span className="slider round"></span>
-        <div className="green-red-dot"></div>
-      </label>
     </div>
   );
 };

@@ -1,54 +1,53 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Shimmer from '../homepage_components/Shimmer';
-import { MENU_URL } from '../../utils/constant';
 import CategoryAccordion from './CategoryAccordion';
 import RestaurantDetailsHeader from './RestaurantDetailsHeader';
+import useRestaurantMenu from '../../utils/useRestaurantMenu';
 
 const Menu = () => {
-  const [menuData, setMenuData] = useState(null);
-  const params = useParams();
-
-  // console.log(params);
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const URL = MENU_URL + params.id;
-
-    const data = await fetch(URL);
-    const json = await data.json();
-
-    setMenuData(json);
-    // console.log(json);
-  };
+  const { id } = useParams();
+  const menuData = useRestaurantMenu(id);
 
   if (menuData === null) return <Shimmer />;
 
   const accordionsList =
-    menuData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  // console.log(accordionsList);
+    menuData?.data?.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
+
   return (
     <div className="menu-container">
       <RestaurantDetailsHeader menuData={menuData} />
-      {accordionsList.map((accordion) => {
+      {accordionsList?.map((accordion) => {
         if (accordion.card.card.title) {
-          return <CategoryAccordion accordionData={accordion} />;
+          return (
+            <CategoryAccordion
+              key={accordion.card.card.title}
+              accordionData={accordion}
+            />
+          );
         }
       })}
-      {/* <h1>{name}</h1>
-      <h2>{city}</h2>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
-        <li>Item 5</li>
-        <li>Item 6</li>
-      </ul> */}
     </div>
   );
 };
 
+export const VegOnly = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = (e) => {
+    if (e.target.checked) {
+      console.log('checked');
+    }
+  };
+  return (
+    <div className="veg-only-switch-container">
+      <p>Veg Only</p>
+      <label className="switch">
+        <input type="checkbox" value={isChecked} onChange={handleChange} />
+        <span className="slider round"></span>
+        <div className="green-red-dot"></div>
+      </label>
+    </div>
+  );
+};
 export default Menu;

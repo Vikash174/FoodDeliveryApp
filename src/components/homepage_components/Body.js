@@ -2,6 +2,7 @@ import ResCard from './ResCard';
 import { useState, useEffect } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
+import { GET_RES_URL } from '../../utils/constant';
 
 const Body = () => {
   const [listOfRes, setListOfRes] = useState([]);
@@ -13,18 +14,14 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
-    );
+    const data = await fetch(GET_RES_URL);
 
     const json = await data.json();
 
     let cards = json.data.cards;
-    cards = cards.filter((card) => {
-      if (card.card.card.id === 'restaurant_grid_listing') {
-        return card;
-      }
-    });
+    cards = cards.filter(
+      (card) => card.card.card.id === 'restaurant_grid_listing'
+    );
     const resListFromApi =
       cards[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
