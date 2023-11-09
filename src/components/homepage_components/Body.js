@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import { GET_RES_URL } from '../../utils/constant';
+import WhatOnYourMind from "./what's_on_your_mind/WhatOnYourMind";
+import TopRestaurantsChains from './top_restaurant_chains/TopRestaurantsChains';
+import RestaurantsWithOnlineDelivery from './restaurant_with_online_delivery/RestaurantsWIthOnlineDelivery';
+import LocationUnserviceable from './location_unserviceable/LocationUnserviceable';
 
 const Body = () => {
-  const [listOfRes, setListOfRes] = useState([]);
-  const [filteredResList, setfilteredResList] = useState([]);
-  const [searchText, setSearchText] = useState('');
+  const [resData, setResData] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -18,93 +20,30 @@ const Body = () => {
 
     const json = await data.json();
 
-    let cards = json.data.cards;
-    cards = cards.filter(
-      (card) => card.card.card.id === 'restaurant_grid_listing'
-    );
-    const resListFromApi =
-      cards[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
-    setListOfRes(resListFromApi);
-    setfilteredResList(resListFromApi);
+    setResData(json);
   };
-
   // Conditional Rendering
 
-  return listOfRes.length === 0 ? (
-    <Shimmer />
-  ) : (
-    <>
-      <div className="body-nav-item-container">
-        <div className="search-div">
-          <input
-            type="text"
-            id="search-input-box"
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-          />
-          <button
-            id="search-btn"
-            onClick={() => {
-              const fliteredList = listOfRes.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
-              );
+  if (resData === null) {
+    return <Shimmer />;
+  }
 
-              if (fliteredList.length > 0) {
-                setfilteredResList(fliteredList);
-              } else {
-                setSearchText('could not find matching result');
-              }
-            }}
-          >
-            Search
-          </button>
-        </div>
-        <div className="filter-div">
-          <button
-            className="filter-btn"
-            onClick={() => {
-              const fliteredList = listOfRes.filter(
-                (res) =>
-                  //   console.log(res.info.avgRating > 4);
-                  res.info.avgRating > 4
-              );
-
-              setfilteredResList(fliteredList);
-            }}
-          >
-            ⭐Top Rated Restaurants
-          </button>
-        </div>
-
-        <div className="all-res-list-div">
-          <button
-            className="all-res-btn"
-            onClick={() => {
-              setfilteredResList(listOfRes);
-            }}
-          >
-            See all Restaurants
-          </button>
-        </div>
+  if (resData.data.cards[0].card.card.title === 'Location Unserviceable') {
+    return <LocationUnserviceable />;
+  }
+  return (
+    <div className="mx-[10vw]">
+      <div className="p-2 m-2 ">
+        <WhatOnYourMind resData={resData} />
       </div>
 
-      <div className="restaurants-card-container">
-        {filteredResList.map((res) => {
-          return (
-            <Link
-              key={res.info.id}
-              to={'restaurants/' + res.info.id}
-              id={'res-link'}
-            >
-              <ResCard resData={res} />
-            </Link>
-          );
-        })}
+      <div className="p-2 m-2 ">
+        <TopRestaurantsChains resData={resData} />
       </div>
-    </>
+      <div className="p-2 m-2 ">
+        <RestaurantsWithOnlineDelivery resData={resData} />
+      </div>
+    </div>
   );
 };
 
