@@ -1,30 +1,33 @@
 const BillSummary = () => {
   return (
-    <div className="bill-details-container">
-      <h4>Bill Details</h4>
-
-      <table>
-        <tr>
-          <td>Item Total</td>
-          <td>₹960</td>
-        </tr>
-        <tr>
-          <td>Delivery Fee | 10.1 kms</td>
-          <td>₹960</td>
-        </tr>
-        <tr>
-          <td>Delivery Tip</td>
-          <td>₹960</td>
-        </tr>
-        <tr>
-          <td>Platform fee</td>
-          <td>₹3</td>
-        </tr>
-        <tr>
-          <td>GST and Restaurant Charges</td>
-          <td>₹48.57</td>
-        </tr>
-      </table>
+    <div className="flex flex-col gap-2 py-4 mr-4  border-b-[2px] border-black ">
+      <div>
+        <span className="font-semibold text-[1rem]">Bill Details</span>
+      </div>
+      <div className=" border-b-[1px] border-gray-200 my-1">
+        <div className="flex justify-between text-sm text-gray-500">
+          <span>Item Total</span>
+          <span>Rs. 2113</span>
+        </div>
+        <div className="flex justify-between text-sm text-gray-500">
+          <span>Delivery Fee | 2.0 kms</span>
+          <span>Rs. 32</span>
+        </div>
+      </div>
+      <div>
+        <div className="flex justify-between text-sm text-gray-500">
+          <span>Delivery Tip</span>
+          <span>Add tip</span>
+        </div>
+        <div className="flex justify-between text-sm text-gray-500">
+          <span>Platform fee</span>
+          <span>Rs. 3</span>
+        </div>
+        <div className="flex justify-between text-sm text-gray-500">
+          <span>GST and Restaurant Charges</span>
+          <span>Rs. 1442.34</span>
+        </div>
+      </div>
     </div>
   );
 };

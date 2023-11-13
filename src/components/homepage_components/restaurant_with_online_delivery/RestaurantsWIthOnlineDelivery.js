@@ -14,7 +14,6 @@ const RestaurantsWithOnlineDelivery = (props) => {
 
   const resList =
     resListCard[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-  console.log(resListCard);
 
   return (
     <div className="border-b-2 border-b-gray-100">

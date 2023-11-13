@@ -3,13 +3,10 @@ import ResCard from '../ResCard';
 
 const TopRestaurantsChains = (props) => {
   const { cards } = props.resData.data;
-  // console.log(props.resData);
-
   const topResChains = cards.filter(
     (card) => card.card.card.id === 'top_brands_for_you'
   );
 
-  console.log(topResChains.length);
   if (topResChains.length === 0) {
     return null;
   }

@@ -1,7 +1,5 @@
-import ResCard from './ResCard';
 import { useState, useEffect } from 'react';
 import Shimmer from './Shimmer';
-import { Link } from 'react-router-dom';
 import { GET_RES_URL } from '../../utils/constant';
 import WhatOnYourMind from "./what's_on_your_mind/WhatOnYourMind";
 import TopRestaurantsChains from './top_restaurant_chains/TopRestaurantsChains';

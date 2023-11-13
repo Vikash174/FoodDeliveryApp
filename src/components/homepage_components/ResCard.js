@@ -1,9 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { CDN_URL } from '../../utils/constant';
 
 const ResCard = (props) => {
-  // console.log(props.resData);
   const { name, avgRating, cuisines, sla, cloudinaryImageId, areaName } =
     props.resData.info;
   return (
@@ -104,7 +101,5 @@ const AreaName = (props) => {
     </div>
   );
 };
-
-// Higher Order Component
 
 export default ResCard;

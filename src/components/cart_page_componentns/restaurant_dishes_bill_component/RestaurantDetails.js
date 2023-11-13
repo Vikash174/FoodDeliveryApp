@@ -1,10 +1,10 @@
 const RestaurantDetails = () => {
   return (
-    <div className="res-detail-container">
+    <div className="flex gap-2">
       <div className="res-image">
         <ResLogo />
       </div>
-      <div className="res-title-adderess">
+      <div className="flex flex-col">
         <ResTitle />
         <ResFirstAdderess />
       </div>
@@ -14,13 +14,16 @@ const RestaurantDetails = () => {
 
 const ResLogo = () => {
   return (
-    <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/amnhccupmtyts6jxhqef" />
+    <img
+      src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/amnhccupmtyts6jxhqef"
+      className="w-12 h-12"
+    />
   );
 };
 
 const ResTitle = () => {
   return (
-    <div id="res-title">
+    <div className="text-sm">
       <h3>UFO Fries & Corns</h3>
     </div>
   );
@@ -28,7 +31,7 @@ const ResTitle = () => {
 
 const ResFirstAdderess = () => {
   return (
-    <div id="res-first-adderess">
+    <div className="text-xs">
       <span>Shivajinager</span>
     </div>
   );

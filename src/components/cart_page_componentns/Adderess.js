@@ -1,6 +1,6 @@
 const Adderess = () => {
   return (
-    <div className="adderess-container">
+    <div className="">
       <AdderessTitle />
       <ResidentType />
       <ResidentAdderess />

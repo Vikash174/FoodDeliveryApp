@@ -1,23 +1,36 @@
 import AccordionDishCard from './AccordionDishCard';
-import { useState } from 'react';
-const CategoryAccordion = () => {
-  const [showAccordionItems, setShowAccordionItems] = useState(false);
+
+const CategoryAccordion = (props) => {
+  const { title, itemCards } = props.accordionItem.card.card;
+  const { showAccordionItems, setIndexToBeShown } = props;
+
+  const handleClick = () => {
+    setIndexToBeShown();
+    props.setShowItem();
+  };
+
   return (
     <div>
-      <div className="p-2 m-2 flex justify-between bg-gray-100">
-        <span>{'Recommended (18)'}</span>
+      <div
+        className="p-2 m-2 flex justify-between bg-gray-100 cursor-pointer"
+        onClick={handleClick}
+      >
+        <span className="font-bold">
+          {title + ' (' + itemCards.length + ')'}
+        </span>
         <span>🔽</span>
       </div>
 
-      {showAccordionItems && (
-        <div>
-          <AccordionDishCard />
-          <AccordionDishCard />
-          <AccordionDishCard />
-          <AccordionDishCard />
-          <AccordionDishCard />
-        </div>
-      )}
+      {showAccordionItems &&
+        itemCards.map((itemCard) => {
+          return (
+            <AccordionDishCard
+              key={itemCard.card.info.id}
+              itemCard={itemCard}
+              dummy={props.dummy}
+            />
+          );
+        })}
     </div>
   );
 };
