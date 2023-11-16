@@ -23,7 +23,7 @@ const RestaurantsWithOnlineDelivery = (props) => {
       <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-6">
         {resList.map((res) => {
           return (
-            <Link key={res.info.id} to={`/restaurants/${res.info.id}`}>
+            <Link key={res.info.id} to={`/home/restaurants/${res.info.id}`}>
               <ResCard resData={res} />
             </Link>
           );

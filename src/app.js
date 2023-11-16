@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import appStore from './utils/AppStore';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import UserContext from './utils/UserContext';
+import Landing from './components/landing_page_components/Landing';
 
 const AppLayout = () => {
   const [userName, setUserName] = useState(
@@ -23,6 +24,8 @@ const AppLayout = () => {
 
     setUserName(data.name);
   }, []);
+
+  const isNewUser = true;
 
   return (
     <Provider store={appStore}>
@@ -40,22 +43,26 @@ const AppLayout = () => {
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <Landing />
+  },
+  {
+    path: '/home',
     element: <AppLayout />,
     children: [
       {
-        path: '/',
+        path: '/home/:place_id',
         element: <Body />
       },
       {
-        path: '/cart',
+        path: '/home/cart',
         element: <Cart />
       },
       {
-        path: '/help',
+        path: '/home/help',
         element: <Help />
       },
       {
-        path: '/restaurants/:id',
+        path: '/home/restaurants/:id',
         element: <Menu />
       }
     ],

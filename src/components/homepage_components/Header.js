@@ -102,7 +102,7 @@ const Header = () => {
           </Link>
         </li>
         <li className="font-medium hover:text-orange-500 cursor-pointer">
-          <Link to="/cart" className="flex items-center ">
+          <Link to="/home/cart" className="flex items-center ">
             <span className="mx-2">
               <svg
                 class="_1GTCc _2MSid"

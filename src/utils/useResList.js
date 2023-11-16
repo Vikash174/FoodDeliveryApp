@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { GET_RES_URL } from './constant';
+import LatLangContext from './LatLangContext';
 
 const useResList = () => {
   const [list, setList] = useState([]);
+  const latLangObj = useContext(LatLangContext);
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
+    console.log(latLangObj);
+
     const data = await fetch(GET_RES_URL);
 
     const json = await data.json();
