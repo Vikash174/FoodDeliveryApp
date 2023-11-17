@@ -2,20 +2,20 @@ import { AppleStoreButton, GooglePlayStoreButton } from './LandingBody';
 
 const LandingFooter = () => {
   return (
-    <div className="bg-black text-white flex justify-evenly p-5">
+    <div className="bg-black w-[100vw] text-white flex flex-col text-center sm:flex-row sm:justify-around sm:p-5">
       <Company />
       <Contact />
       <Legal />
-      <AppDownloadButtons />
+      {/* <AppDownloadButtons /> */}
     </div>
   );
 };
 
 const Company = () => {
   return (
-    <div className="p-2">
-      <span className="text-[#93959f] font-semibold ">COMPANY</span>
-      <ul>
+    <div className="p-2 sm:text-start md:p-10">
+      <span className="text-[#93959f] font-semibold md:text-xl">COMPANY</span>
+      <ul className="md:text-lg">
         <li>About us</li>
         <li>Team</li>
         <li>Carrers</li>
@@ -33,9 +33,9 @@ const Company = () => {
 
 const Contact = () => {
   return (
-    <div className="p-2">
-      <span className="text-[#93959f] font-semibold ">CONTACT</span>
-      <ul>
+    <div className="p-2 sm:text-start md:p-10">
+      <span className="text-[#93959f] font-semibold md:text-xl">CONTACT</span>
+      <ul className="md:text-lg">
         <li>Help & Support</li>
         <li>Partner with us</li>
         <li>Ride with us</li>
@@ -46,9 +46,9 @@ const Contact = () => {
 
 const Legal = () => {
   return (
-    <div className="p-2">
-      <span className="text-[#93959f] font-semibold ">LEGAL</span>
-      <ul>
+    <div className="p-2 sm:text-start md:p-10">
+      <span className="text-[#93959f] font-semibold md:text-xl">LEGAL</span>
+      <ul className="md:text-lg">
         <li>Terms & Condition</li>
         <li>Refund & Cancellation</li>
         <li>Privacy Policy</li>
@@ -64,7 +64,7 @@ const Legal = () => {
 
 const AppDownloadButtons = () => {
   return (
-    <div className="p-5">
+    <div className="p-5 hidden sm:block ">
       <GooglePlayStoreButton />
       <AppleStoreButton />
     </div>

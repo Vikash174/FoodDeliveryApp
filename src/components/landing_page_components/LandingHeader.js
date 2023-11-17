@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import LatLangContext from '../../utils/LatLangContext';
 const LandingHeader = () => {
   return (
-    <div className="">
+    <div className="flex justify-end lg:w-[100vw]">
       <HeaderNavAndHeadings />
       <LandingLogoImage />
     </div>
@@ -23,44 +23,44 @@ const HeaderNavAndHeadings = () => {
   // console.log(listOfCities);
 
   return (
-    <div className="">
-      <div className="flex">
+    <div className="flex flex-col p-5 gap-5 lg:p-10 lg:m-10 lg:gap-10">
+      <div className="flex justify-between items-center">
         <div>
           <img
             src="https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Swiggy_logo.svg/2560px-Swiggy_logo.svg.png"
-            className="w-[200px]"
+            className="w-[150px] md:w-[200px]"
           ></img>
         </div>
-        <div className="">
-          <button className="font-bold">Login</button>
+        <div>
+          <button className="font-bold p-2 md:text-xl">Login</button>
 
-          <button className="mx-10 bg-black text-white px-5 py-2 font-bold">
+          <button className=" bg-black text-white  font-bold p-2 md:text-xl">
             Sign up
           </button>
         </div>
       </div>
-      <div className="flex flex-col mr-12">
-        <span className="text-4xl font-semibold">Hungry?</span>
-        <span className="text-xl text-gray-500">
+      <div className="flex flex-col">
+        <span className="text-2xl font-semibold md:text-2xl">Hungry?</span>
+        <span className="text-lg text-gray-500 md:text-xl">
           Order food from your favouite restaurants near you.
         </span>
       </div>
-      <div className="relative flex ">
+      <div className="flex flex-col gap-3 sm:flex-row  sm:gap-0 sm:relative">
         <input
-          className="p-5 border border-black w-96"
+          className=" border-[1px] border-black w-[400px] p-4 md:text-xl md:w-[450px] "
           type="text"
           placeholder="Enter your delivery location"
           onChange={inputHandler}
         />
-        <button className="absolute left-72 top-3 hover:bg-gray-200 p-2">
+        <button className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[290px] sm:top-[10px] md:text-sm md:left-[370px] md:top-[15px]">
           Locate Me
         </button>
-        <button className="p-5 bg-orange-400 text-white font-semibold border border-orange-400">
+        <button className="p-2 bg-orange-400 text-white font-semibold border border-orange-400 md:text-lg">
           FIND FOOD
         </button>
       </div>
 
-      <div className="absolute top-80 bg-white">
+      <div className="absolute top-80 bg-white ">
         {listOfCities != undefined &&
           listOfCities.map((city) => {
             return (
@@ -71,9 +71,11 @@ const HeaderNavAndHeadings = () => {
           })}
       </div>
 
-      <div className="flex flex-col">
-        <span className="text-gray-400">POPULAR CITIES IN INDIA</span>
-        <span className="font-[500]">
+      <div className="flex flex-col ">
+        <span className="text-gray-400 md:text-[1rem]">
+          POPULAR CITIES IN INDIA
+        </span>
+        <span className="font-[500] md:text-sm">
           Ahmedabad Bangalore Chennai Delhi Gurgaon Hyderabad Kolkata Mumbai
           Pune & more
         </span>
@@ -87,7 +89,7 @@ const LandingLogoImage = () => {
     <div>
       <img
         src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch1_vlksgq"
-        className="w-[40vw] h-[60vh] min-w-[40vw]"
+        className="w-[40vw] h-[60vh] hidden sm:block sm:h-[400px] lg:w-[800px] lg:h-[600px]"
       />
     </div>
   );
