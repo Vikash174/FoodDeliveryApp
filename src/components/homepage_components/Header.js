@@ -1,19 +1,36 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../../utils/UserContext';
 import { useSelector } from 'react-redux';
 
-const Header = () => {
+const Header = (props) => {
   const [userState, setUseState] = useState('Log In');
+  const [listElement, setListElement] = useState(null);
+  const [showNavList, setShowNavList] = useState(false);
   const data = useContext(UserContext);
 
   //Subscribing to the store using Selector
   const cartItems = useSelector((store) => store.cart.items);
 
+  useEffect(() => {
+    setListElement(document.getElementById('nav-item-container'));
+  }, []);
+  const hamburgerHandler = () => {
+    // console.log('hamburger clicked');
+
+    if (!showNavList) {
+      listElement.classList.add('hidden');
+      setShowNavList(true);
+    } else {
+      listElement.classList.remove('hidden');
+      setShowNavList(false);
+    }
+  };
+
   // console.log(cartItems);
   return (
-    <div className="p-3 flex justify-evenly items-center shadow-sm sticky w-full top-0 bg-white z-10">
-      <div className="flex items-center">
+    <div className="flex justify-evenly items-center shadow-sm sticky w-full top-0 bg-white z-10">
+      <div className="flex items-center gap-4 p-3">
         <Link to={'/'}>
           <svg viewBox="0 0 559 825" height="49" width="34" fill="#fc8019">
             <path
@@ -37,18 +54,19 @@ const Header = () => {
             </defs>
           </svg>
         </Link>
-        <div className="p-2 m-2 cursor-pointer">
-          <span className="ml-5 mr-2 font-semibold underline underline-offset-8 hover:text-orange-500 ">
-            Home
+        <div className="cursor-pointer p-2">
+          <span className="font-semibold underline underline-offset-8 hover:text-orange-500 text-sm p-2">
+            Other
           </span>
-          <span className="text-sm">
-            Shastri Nagar, Jabalpur, Madhya Pradesh
-          </span>
+          <span className="text-xs">{props.location}</span>
         </div>
       </div>
 
-      <ul className="flex gap-4">
-        <li className="font-medium hover:text-orange-500 cursor-pointer">
+      <ul
+        id="nav-item-container"
+        className="absolute hidden bg-white text-lg top-[50px] p-5 left-[200px] "
+      >
+        <li className="font-medium hover:text-orange-500 cursor-pointer p-1">
           <Link to="/help" className="flex items-center">
             <span className="mx-1">
               <svg viewBox="5 -1 12 25" height="17" width="17">
@@ -58,7 +76,7 @@ const Header = () => {
             <span>Search</span>
           </Link>
         </li>
-        <li className="font-medium hover:text-orange-500 cursor-pointer">
+        <li className="font-medium hover:text-orange-500 cursor-pointer p-1">
           <Link to={'/offers-near-me'} className="flex items-center">
             <span className="mx-2">
               <svg viewBox="0 0 32 32" height="19" width="19" fill="#686b78">
@@ -68,7 +86,7 @@ const Header = () => {
             <span>Offers</span>
           </Link>
         </li>
-        <li className="font-medium hover:text-orange-500 cursor-pointer">
+        <li className="font-medium hover:text-orange-500 cursor-pointer p-1">
           <Link to="/help" className="flex items-center">
             <span className="mx-2">
               <svg
@@ -85,7 +103,7 @@ const Header = () => {
           </Link>
         </li>
 
-        <li className="font-medium hover:text-orange-500 cursor-pointer">
+        <li className="font-medium hover:text-orange-500 cursor-pointer p-1">
           <Link to={'/user'} className="flex items-center">
             <span className="mx-2">
               <svg
@@ -101,7 +119,7 @@ const Header = () => {
             <span>{data.loggedInUser}</span>
           </Link>
         </li>
-        <li className="font-medium hover:text-orange-500 cursor-pointer">
+        <li className="font-medium hover:text-orange-500 cursor-pointer p-1">
           <Link to="/home/cart" className="flex items-center ">
             <span className="mx-2">
               <svg
@@ -118,6 +136,11 @@ const Header = () => {
           </Link>
         </li>
       </ul>
+      <div onClick={hamburgerHandler} className="flex flex-col m-0 p-0">
+        <span className="h-1">---</span>
+        <span className="h-1">---</span>
+        <span>---</span>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { AppleStoreButton, GooglePlayStoreButton } from './LandingBody';
 
 const LandingFooter = () => {
   return (
-    <div className="bg-black w-[100vw] text-white flex flex-col text-center sm:flex-row sm:justify-around sm:p-5">
+    <div className="bg-black text-white flex flex-col text-center sm:flex-row sm:justify-around sm:p-5">
       <Company />
       <Contact />
       <Legal />
@@ -15,7 +15,7 @@ const Company = () => {
   return (
     <div className="p-2 sm:text-start md:p-10">
       <span className="text-[#93959f] font-semibold md:text-xl">COMPANY</span>
-      <ul className="md:text-lg">
+      <ul className="text-sm md:text-lg">
         <li>About us</li>
         <li>Team</li>
         <li>Carrers</li>
@@ -35,7 +35,7 @@ const Contact = () => {
   return (
     <div className="p-2 sm:text-start md:p-10">
       <span className="text-[#93959f] font-semibold md:text-xl">CONTACT</span>
-      <ul className="md:text-lg">
+      <ul className="text-sm md:text-lg">
         <li>Help & Support</li>
         <li>Partner with us</li>
         <li>Ride with us</li>
@@ -48,15 +48,13 @@ const Legal = () => {
   return (
     <div className="p-2 sm:text-start md:p-10">
       <span className="text-[#93959f] font-semibold md:text-xl">LEGAL</span>
-      <ul className="md:text-lg">
+      <ul className="text-sm md:text-lg">
         <li>Terms & Condition</li>
         <li>Refund & Cancellation</li>
         <li>Privacy Policy</li>
         <li>Cookie Policy</li>
         <li>Offer Terms</li>
         <li>Phishing & Fraud</li>
-        <li>Corporate-Swiggy Money Codes Terms and Conditons</li>
-        <li>Corporate-Swiggy Discount Voucher Terms and Conditions</li>
       </ul>
     </div>
   );

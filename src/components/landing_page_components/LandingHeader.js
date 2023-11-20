@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LAT_LANG_URL } from '../../utils/constant';
 import useRecommendedPlaces from '../../utils/useRecommendedPlaces';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LatLangContext from '../../utils/LatLangContext';
 const LandingHeader = () => {
   return (
@@ -14,9 +14,22 @@ const LandingHeader = () => {
 
 const HeaderNavAndHeadings = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   const inputHandler = (e) => {
     setSearchTerm(e.target.value);
+  };
+
+  const locateMeHandler = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log(position.coords.latitude, position.coords.longitude);
+        navigate('home/23.1382094+79.8651101');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
 
   const listOfCities = useRecommendedPlaces(searchTerm);
@@ -52,7 +65,10 @@ const HeaderNavAndHeadings = () => {
           placeholder="Enter your delivery location"
           onChange={inputHandler}
         />
-        <button className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[290px] sm:top-[10px] md:text-sm md:left-[370px] md:top-[15px]">
+        <button
+          className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[290px] sm:top-[10px] md:text-sm md:left-[370px] md:top-[15px]"
+          onClick={locateMeHandler}
+        >
           Locate Me
         </button>
         <button className="p-2 bg-orange-400 text-white font-semibold border border-orange-400 md:text-lg">

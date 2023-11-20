@@ -17,6 +17,8 @@ const AppLayout = () => {
     useContext(UserContext).loggedInUser
   );
 
+  const [location, setLocation] = useState('');
+
   useEffect(() => {
     const data = {
       name: 'Vikash Rai'
@@ -31,9 +33,9 @@ const AppLayout = () => {
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName }}>
         <div className="app">
-          <Header />
+          <Header location={location} />
 
-          <Outlet />
+          <Outlet context={[setLocation]} />
         </div>
       </UserContext.Provider>
     </Provider>
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/home/:place_id',
+        element: <Body />
+      },
+      {
+        path: '/home/:lat_long',
         element: <Body />
       },
       {

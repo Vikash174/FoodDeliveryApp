@@ -1,8 +1,16 @@
-import { Title, NextPrevBtn } from "../what's_on_your_mind/WhatOnYourMind";
+import { Title } from "../what's_on_your_mind/WhatOnYourMind";
 import ResCard from '../ResCard';
+import { NextPrevBtn } from '../best_offers_for_you/BestOffers';
+import { useEffect, useState } from 'react';
 
 const TopRestaurantsChains = (props) => {
   const { cards } = props.resData.data;
+  const [resCardContainer, setResCardContainer] = useState();
+
+  useEffect(() => {
+    setResCardContainer(document.getElementById('rescard-container'));
+  }, []);
+
   const topResChains = cards.filter(
     (card) => card.card.card.id === 'top_brands_for_you'
   );
@@ -17,9 +25,12 @@ const TopRestaurantsChains = (props) => {
     <div className="border-b-2 border-gray-100">
       <div className="flex justify-between">
         <Title title={topResChains[0]?.card?.card?.header?.title} />
-        <NextPrevBtn />
+        <NextPrevBtn element={resCardContainer} />
       </div>
-      <div className=" flex overflow-y-auto overflow-hidden">
+      <div
+        id="rescard-container"
+        className=" flex  overflow-x-scroll scrollbar-hide scroll-smooth"
+      >
         {restaurantsList.map((res) => {
           return <ResCard key={res.info.id} resData={res} />;
         })}

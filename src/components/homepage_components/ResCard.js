@@ -4,7 +4,7 @@ const ResCard = (props) => {
   const { name, avgRating, cuisines, sla, cloudinaryImageId, areaName } =
     props.resData.info;
   return (
-    <div className="p-2 m-2 min-w-max transition ease-in-out  hover:scale-95 hover:cursor-pointer">
+    <div className="transition ease-in-out hover:scale-95 hover:cursor-pointer">
       <ResImage imgId={cloudinaryImageId} />
       <ResName resName={name} />
       <Rating_Delivery_time
@@ -20,7 +20,7 @@ const ResImage = (props) => {
   const { imgId } = props;
   return (
     <div>
-      <img className="h-52 w-80 rounded-lg" src={CDN_URL + imgId} />
+      <img className="h-[100px] w-[140px] rounded-lg" src={CDN_URL + imgId} />
     </div>
   );
 };
@@ -28,7 +28,7 @@ const ResImage = (props) => {
 const ResName = (props) => {
   const { resName } = props;
   return (
-    <div className="font-medium text-lg m-1">
+    <div className="font-medium text-sm m-1">
       <h3>{resName}</h3>
     </div>
   );
@@ -37,7 +37,7 @@ const ResName = (props) => {
 const Rating_Delivery_time = (props) => {
   const { rating_deliveryTime } = props;
   return (
-    <div className="rating-deliverytime-container">
+    <div className="rating-deliverytime-container text-sm">
       <h4 className="m-1 flex items-center font-medium">
         <svg
           className="mr-1"
@@ -87,7 +87,7 @@ const Cuisines = (props) => {
     cuisines.push('......');
   }
   return (
-    <div className="m-1 text-slate-400">
+    <div className="m-1 text-slate-400 text-sm">
       <span>{cuisines.join(', ')}</span>
     </div>
   );
@@ -96,7 +96,7 @@ const Cuisines = (props) => {
 const AreaName = (props) => {
   const { areaName } = props;
   return (
-    <div className="m-1 text-slate-400">
+    <div className="m-1 text-slate-400 text-sm">
       <span>{areaName}</span>
     </div>
   );
