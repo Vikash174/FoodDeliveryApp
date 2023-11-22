@@ -45,14 +45,18 @@ const WhatOnYourMind = (props) => {
 
 export const Title = (props) => {
   const { title } = props;
-  return <span className="text-sm font-bold whitespace-nowrap">{title}</span>;
+  return (
+    <span className="text-sm font-bold whitespace-nowrap md:text-lg md:py-2">
+      {title}
+    </span>
+  );
 };
 
 const Image = (props) => {
   const { imageId } = props?.dish;
   return (
-    <div className="min-w-max p-2 m-2  hover:cursor-pointer">
-      <img className="w-16" src={CDN_URL + imageId} />
+    <div className="min-w-max p-2 m-2  hover:cursor-pointer ">
+      <img className="w-16 md:w-28" src={CDN_URL + imageId} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import AccordionDishCard from './AccordionDishCard';
 
 const CategoryAccordion = (props) => {
   const { title, itemCards } = props.accordionItem.card.card;
-  const { showAccordionItems, setIndexToBeShown } = props;
+  const { showAccordionItems, setIndexToBeShown, resId } = props;
 
   const handleClick = () => {
     setIndexToBeShown();
@@ -28,6 +28,7 @@ const CategoryAccordion = (props) => {
               key={itemCard.card.info.id}
               itemCard={itemCard}
               dummy={props.dummy}
+              resId={resId}
             />
           );
         })}

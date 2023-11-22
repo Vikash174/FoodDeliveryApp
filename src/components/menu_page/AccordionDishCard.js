@@ -11,7 +11,9 @@ const AccordionDishCard = (props) => {
   const addItemHandler = (item) => {
     // Dispatching an action
 
+    item.resId = props.resId;
     dispatch(addItem(item));
+    console.log(item);
   };
   return (
     <div className="p-2 m-2 flex justify-between items-center border-b-[1px] border-gray-300">

@@ -13,4 +13,4 @@ export const PLACE_AUTOCOMPLETE_URL =
   'https://www.swiggy.com/dapi/misc/place-autocomplete?input=';
 
 export const LAT_LANG_URL =
-  'https://www.swiggy.com/dapi/misc/address-recommend?latlng=';
+  'https://www.swiggy.com/dapi/misc/address-recommend?place_id=';

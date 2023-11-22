@@ -39,7 +39,7 @@ const BestOffers = (props) => {
 
 export const Title = (props) => {
   const { title } = props;
-  return <span className="text-sm font-bold ">{title}</span>;
+  return <span className="text-sm font-bold md:text-lg md:py-2">{title}</span>;
 };
 
 const Image = (props) => {
@@ -47,7 +47,7 @@ const Image = (props) => {
   return (
     <div className="p-2 m-2 min-w-max hover:cursor-pointer">
       <img
-        className="w-60"
+        className="w-60 md:w-72"
         src={CDN_URL + imageId}
         alt={accessibility.altText}
       />
@@ -78,7 +78,7 @@ export const NextPrevBtn = (props) => {
   };
 
   return (
-    <div className="hidden">
+    <div className="hidden md:flex">
       <button
         className=" p-2 m-2 bg-gray-100 rounded-3xl"
         onClick={PrevBtnHandler}

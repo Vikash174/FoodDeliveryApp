@@ -64,7 +64,7 @@ const Header = (props) => {
 
       <ul
         id="nav-item-container"
-        className="absolute hidden bg-white text-lg top-[50px] p-5 left-[200px] "
+        className=" hidden bg-white text-lg top-[50px] p-5 left-[200px] md:flex md:bg-none md:text-sm"
       >
         <li className="font-medium hover:text-orange-500 cursor-pointer p-1">
           <Link to="/help" className="flex items-center">
@@ -136,7 +136,10 @@ const Header = (props) => {
           </Link>
         </li>
       </ul>
-      <div onClick={hamburgerHandler} className="flex flex-col m-0 p-0">
+      <div
+        onClick={hamburgerHandler}
+        className="flex flex-col m-0 p-0 md:hidden"
+      >
         <span className="h-1">---</span>
         <span className="h-1">---</span>
         <span>---</span>

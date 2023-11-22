@@ -3,11 +3,12 @@
   "name": "reactjs_learning",
   "version": "1.0.0",
   "description": "Learning React",
-  "main": "app.js",
+  "main": "src/app.js",
+  "source": "index.html",
   "type": "module",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build ",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "jest"

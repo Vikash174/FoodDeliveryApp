@@ -7,7 +7,7 @@ import Error from './components/error_components/Error';
 import Help from './components/help_page_components/Help';
 import Menu from './components/menu_page/Menu';
 import { Provider } from 'react-redux';
-import appStore from './utils/AppStore';
+import appStore from './utils/appStore';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import UserContext from './utils/UserContext';
 import Landing from './components/landing_page_components/Landing';
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         element: <Body />
       },
       {
-        path: '/home/:lat_long',
+        path: '/home/?lat&lang',
         element: <Body />
       },
       {

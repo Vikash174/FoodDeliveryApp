@@ -18,6 +18,7 @@ const Menu = () => {
   if (menuData === null) {
     return <Shimmer />;
   }
+  console.log(menuData);
 
   const resInfo = menuData?.data?.cards[0].card?.card.info;
   const accordionList =
@@ -27,7 +28,7 @@ const Menu = () => {
         'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
     );
 
-  // console.log(accordionList);
+  // console.log(resInfo.id);
 
   return (
     <div className="md:mx-[20wh] lg:mx-[25vw] flex-col">
@@ -41,6 +42,7 @@ const Menu = () => {
             setIndexToBeShown={() => setIndexToBeShown(index)}
             setShowItem={() => setShowItem(!showItem)}
             dummy={dummy}
+            resId={resInfo.id}
           />
         );
       })}

@@ -24,7 +24,9 @@ const HeaderNavAndHeadings = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         console.log(position.coords.latitude, position.coords.longitude);
-        navigate('home/23.1382094+79.8651101');
+        navigate(
+          `home/${position.coords.latitude}+${position.coords.longitude}`
+        );
       },
       (error) => {
         console.log(error);
@@ -60,18 +62,22 @@ const HeaderNavAndHeadings = () => {
       </div>
       <div className="flex flex-col gap-3 sm:flex-row  sm:gap-0 sm:relative">
         <input
-          className=" border-[1px] border-black w-[400px] p-4 md:text-xl md:w-[450px] "
+          className=" border-[1px] border-orange-500 w-[400px] p-4 md:text-xl md:w-[450px] focus:outline-none"
           type="text"
           placeholder="Enter your delivery location"
           onChange={inputHandler}
         />
         <button
-          className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[290px] sm:top-[10px] md:text-sm md:left-[370px] md:top-[15px]"
+          className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[290px] sm:top-[10px] md:text-sm md:left-[350px] md:top-[15px] hover:bg-gray-200 flex items-center"
           onClick={locateMeHandler}
         >
+          <img
+            className="w-4"
+            src="https://icons.iconarchive.com/icons/iconsmind/outline/512/Target-icon.png"
+          />
           Locate Me
         </button>
-        <button className="p-2 bg-orange-400 text-white font-semibold border border-orange-400 md:text-lg">
+        <button className="p-2 bg-orange-400 text-white font-semibold border border-orange-400 md:text-lg ">
           FIND FOOD
         </button>
       </div>

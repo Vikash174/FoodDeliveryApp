@@ -4,7 +4,7 @@ const ResCard = (props) => {
   const { name, avgRating, cuisines, sla, cloudinaryImageId, areaName } =
     props.resData.info;
   return (
-    <div className="transition ease-in-out hover:scale-95 hover:cursor-pointer">
+    <div className="transition ease-in-out hover:scale-95 hover:cursor-pointer p-2">
       <ResImage imgId={cloudinaryImageId} />
       <ResName resName={name} />
       <Rating_Delivery_time
@@ -20,7 +20,10 @@ const ResImage = (props) => {
   const { imgId } = props;
   return (
     <div>
-      <img className="h-[100px] w-[140px] rounded-lg" src={CDN_URL + imgId} />
+      <img
+        className="h-[100px] w-[140px] min-h-[100px] min-w-[140px] md:min-w-[270px] md:min-h-[190px] rounded-lg md:h-[150px] md:w-[200px]"
+        src={CDN_URL + imgId}
+      />
     </div>
   );
 };
@@ -28,7 +31,7 @@ const ResImage = (props) => {
 const ResName = (props) => {
   const { resName } = props;
   return (
-    <div className="font-medium text-sm m-1">
+    <div className="font-medium text-sm m-1 lg:text-xl">
       <h3>{resName}</h3>
     </div>
   );
@@ -37,8 +40,8 @@ const ResName = (props) => {
 const Rating_Delivery_time = (props) => {
   const { rating_deliveryTime } = props;
   return (
-    <div className="rating-deliverytime-container text-sm">
-      <h4 className="m-1 flex items-center font-medium">
+    <div className="rating-deliverytime-container text-sm lg:text-lg">
+      <h4 className="m-1 flex items-center font-medium ">
         <svg
           className="mr-1"
           width="20"
@@ -87,7 +90,7 @@ const Cuisines = (props) => {
     cuisines.push('......');
   }
   return (
-    <div className="m-1 text-slate-400 text-sm">
+    <div className="m-1 text-slate-400 text-sm lg:text-sm">
       <span>{cuisines.join(', ')}</span>
     </div>
   );
@@ -96,7 +99,7 @@ const Cuisines = (props) => {
 const AreaName = (props) => {
   const { areaName } = props;
   return (
-    <div className="m-1 text-slate-400 text-sm">
+    <div className="m-1 text-slate-400 text-sm lg:text-sm">
       <span>{areaName}</span>
     </div>
   );
