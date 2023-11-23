@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  latLng: {}
+};
+
 const latLngSlice = createSlice({
   name: 'latLng',
-  initialState: {
-    lat: '',
-    lng: ''
-  },
+  initialState,
   reducers: {
     updateLatLng: (state, action) => {
-      state.lat = action.payload;
-      state.lng = action.payload;
+      state.latLng = action.payload;
     }
   }
 });

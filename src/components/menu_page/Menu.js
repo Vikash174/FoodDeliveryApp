@@ -1,7 +1,7 @@
 import MenuHeader from './MenuHeader';
 import CategoryAccordion from './CategoryAccordion';
 import { useParams } from 'react-router-dom';
-import useRestaurantMenu from '../../utils/useRestaurantMenu';
+import useRestaurantMenu from '../../utils/custom_hooks/useRestaurantMenu';
 import Shimmer from '../homepage_components/Shimmer';
 import { useState } from 'react';
 const Menu = () => {
@@ -9,17 +9,15 @@ const Menu = () => {
 
   const menuData = useRestaurantMenu(id);
 
-  const [indexToBeShown, setIndexToBeShown] = useState(null);
+  const [indexToBeShown, setIndexToBeShown] = useState(0);
 
-  const [showItem, setShowItem] = useState(false);
+  const [showItem, setShowItem] = useState(true);
 
   const dummy = 'Dummy data';
 
   if (menuData === null) {
     return <Shimmer />;
   }
-  console.log(menuData);
-
   const resInfo = menuData?.data?.cards[0].card?.card.info;
   const accordionList =
     menuData?.data?.cards[2].groupedCard?.cardGroupMap?.REGULAR.cards.filter(

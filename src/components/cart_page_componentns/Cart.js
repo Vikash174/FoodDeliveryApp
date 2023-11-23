@@ -69,7 +69,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    const data = fecthData();
+    // const data = fecthData();
   }, []);
 
   return cartItems.length === 0 ? (

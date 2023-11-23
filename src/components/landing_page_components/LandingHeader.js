@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { LAT_LANG_URL } from '../../utils/constant';
-import useRecommendedPlaces from '../../utils/useRecommendedPlaces';
+import useRecommendedPlaces from '../../utils/custom_hooks/useRecommendedPlaces';
 import { Link, useNavigate } from 'react-router-dom';
-import LatLangContext from '../../utils/LatLangContext';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+
 const LandingHeader = () => {
   return (
     <div className="flex justify-end lg:w-[100vw]">
@@ -15,6 +15,29 @@ const LandingHeader = () => {
 const HeaderNavAndHeadings = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+  const [wordIndex, setWordIndex] = useState(0);
+  useEffect(() => {
+    // setInterval(() => {
+    //   console.log('rerendered');
+    //   setWordIndex(wordIndex + 1);
+    // }, 3000);
+
+    const timeout = setInterval(() => {
+      setWordIndex(wordIndex + 1);
+    }, 2000);
+    return () => {
+      clearInterval(timeout);
+    };
+  }, [wordIndex]);
+
+  const wordArray = [
+    'Hungry?',
+    'Cooking Gone Wrong?',
+    'Gaming Night?',
+    'Unexpected Guest?',
+    'Late night at office?',
+    'Movie marathon?'
+  ];
 
   const inputHandler = (e) => {
     setSearchTerm(e.target.value);
@@ -23,7 +46,6 @@ const HeaderNavAndHeadings = () => {
   const locateMeHandler = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log(position.coords.latitude, position.coords.longitude);
         navigate(
           `home/${position.coords.latitude}+${position.coords.longitude}`
         );
@@ -35,7 +57,6 @@ const HeaderNavAndHeadings = () => {
   };
 
   const listOfCities = useRecommendedPlaces(searchTerm);
-  // console.log(listOfCities);
 
   return (
     <div className="flex flex-col p-5 gap-5 lg:p-10 lg:m-10 lg:gap-10">
@@ -55,7 +76,10 @@ const HeaderNavAndHeadings = () => {
         </div>
       </div>
       <div className="flex flex-col">
-        <span className="text-2xl font-semibold md:text-2xl">Hungry?</span>
+        <span className="text-2xl font-semibold md:text-2xl ">
+          {wordArray[wordIndex % wordArray.length]}
+        </span>
+
         <span className="text-lg text-gray-500 md:text-xl">
           Order food from your favouite restaurants near you.
         </span>
@@ -68,7 +92,7 @@ const HeaderNavAndHeadings = () => {
           onChange={inputHandler}
         />
         <button
-          className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[290px] sm:top-[10px] md:text-sm md:left-[350px] md:top-[15px] hover:bg-gray-200 flex items-center"
+          className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[260px] sm:top-[10px]  md:left-[310px] md:top-[15px] lg:left-[310px] lg:top-[12px] xl:left-[340px] hover:bg-gray-200 flex items-center"
           onClick={locateMeHandler}
         >
           <img
@@ -118,7 +142,6 @@ const LandingLogoImage = () => {
 };
 
 const SuggestedPlace = (props) => {
-  // console.log(props);
   const { description } = props.city;
 
   return (

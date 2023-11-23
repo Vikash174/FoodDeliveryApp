@@ -5,16 +5,19 @@ import WhatOnYourMind from "./what's_on_your_mind/WhatOnYourMind";
 import TopRestaurantsChains from './top_restaurant_chains/TopRestaurantsChains';
 import RestaurantsWithOnlineDelivery from './restaurant_with_online_delivery/RestaurantsWIthOnlineDelivery';
 import LocationUnserviceable from './location_unserviceable/LocationUnserviceable';
-import LatLangContext from '../../utils/LatLangContext';
+
 import { useParams, useOutletContext } from 'react-router-dom';
 import BestOffers from './best_offers_for_you/BestOffers';
 import LandingFooter from '../landing_page_components/LandingFooter';
+import { useDispatch } from 'react-redux';
+import { updateLatLng } from '../../redux/slices/latLngSlice';
 
 const Body = () => {
   const [setLocation, setLatLang] = useOutletContext();
-
   const [resData, setResData] = useState(null);
+
   const { place_id } = useParams();
+  const dispatch = useDispatch();
   // console.log(useParams());
   useEffect(() => {
     fetchData();
@@ -30,6 +33,8 @@ const Body = () => {
       url =
         GET_RES_URL +
         `lat=${latLngArr[0]}&lng=${latLngArr[1]}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
+
+      dispatch(updateLatLng({ lat: latLngArr[0], lng: latLngArr[1] }));
     } else {
       const latLagData = await fetch(LAT_LANG_URL + place_id);
       const latLangJson = await latLagData.json();
@@ -37,6 +42,13 @@ const Body = () => {
         GET_RES_URL +
         `lat=${latLangJson.data[0].geometry.location.lat}&lng=${latLangJson.data[0].geometry.location.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
       setLocation(latLangJson.data[0].formatted_address);
+
+      dispatch(
+        updateLatLng({
+          lat: latLangJson.data[0].geometry.location.lat,
+          lng: latLangJson.data[0].geometry.location.lng
+        })
+      );
     }
 
     const data = await fetch(url);

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { GET_RES_URL } from './constant';
+import { GET_RES_URL } from '../constant';
 import LatLangContext from './LatLangContext';
 
 const useResList = () => {

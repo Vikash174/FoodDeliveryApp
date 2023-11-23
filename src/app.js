@@ -7,37 +7,21 @@ import Error from './components/error_components/Error';
 import Help from './components/help_page_components/Help';
 import Menu from './components/menu_page/Menu';
 import { Provider } from 'react-redux';
-import appStore from './utils/appStore';
+import appStore from './redux/store/appStore';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import UserContext from './utils/UserContext';
 import Landing from './components/landing_page_components/Landing';
+import Search from './components/search_page/Search';
+import Offers from './components/offer_page/Offers';
 
 const AppLayout = () => {
-  const [userName, setUserName] = useState(
-    useContext(UserContext).loggedInUser
-  );
-
   const [location, setLocation] = useState('');
-
-  useEffect(() => {
-    const data = {
-      name: 'Vikash Rai'
-    };
-
-    setUserName(data.name);
-  }, []);
-
-  const isNewUser = true;
 
   return (
     <Provider store={appStore}>
-      <UserContext.Provider value={{ loggedInUser: userName }}>
-        <div className="app">
-          <Header location={location} />
-
-          <Outlet context={[setLocation]} />
-        </div>
-      </UserContext.Provider>
+      <div className="app">
+        <Header location={location} />
+        <Outlet context={[setLocation]} />
+      </div>
     </Provider>
   );
 };
@@ -66,6 +50,14 @@ const router = createBrowserRouter([
       {
         path: '/home/help',
         element: <Help />
+      },
+      {
+        path: '/home/offers-near-me',
+        element: <Offers />
+      },
+      {
+        path: '/home/search',
+        element: <Search />
       },
       {
         path: '/home/restaurants/:id',

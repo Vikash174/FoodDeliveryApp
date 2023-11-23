@@ -2,7 +2,7 @@ import { AppleStoreButton, GooglePlayStoreButton } from './LandingBody';
 
 const LandingFooter = () => {
   return (
-    <div className="bg-black text-white flex flex-col text-center sm:flex-row sm:justify-around sm:p-5">
+    <div className="bg-black text-white flex flex-col text-center sm:flex-row sm:justify-around sm:p-5 w-[100vw]">
       <Company />
       <Contact />
       <Legal />

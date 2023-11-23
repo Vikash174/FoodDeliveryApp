@@ -6,6 +6,7 @@ export default {
   },
   plugins: [
     require('tailwind-scrollbar-hide'),
-    require('tailwindcss-no-scrollbar')
+    require('tailwindcss-no-scrollbar'),
+    require('@shrutibalasa/tailwind-grid-auto-fit')
   ]
 };

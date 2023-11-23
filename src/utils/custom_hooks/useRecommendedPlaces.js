@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { GET_RES_URL, PLACE_AUTOCOMPLETE_URL } from './constant';
+import { GET_RES_URL, PLACE_AUTOCOMPLETE_URL } from '../constant';
 
 const useRecommendedPlaces = (searchTerm) => {
   const [listOfCities, setListOfCities] = useState([]);
