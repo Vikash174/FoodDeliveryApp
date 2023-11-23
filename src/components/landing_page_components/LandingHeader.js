@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import useRecommendedPlaces from '../../utils/custom_hooks/useRecommendedPlaces';
 import { Link, useNavigate } from 'react-router-dom';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 const LandingHeader = () => {
   return (
