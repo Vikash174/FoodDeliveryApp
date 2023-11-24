@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { proxyUrl } from '../../utils/constant';
 const Offers = () => {
   const [html, setHTML] = useState({ __html: '' });
 
   useEffect(() => {
     async function createMarkup() {
       let response;
-      response = await fetch(`
+      response = await fetch(`${proxyUrl}
         https://www.swiggy.com/offers-near-me`);
       const backendHtmlString = await response.text();
 

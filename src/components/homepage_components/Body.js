@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import Shimmer from './Shimmer';
-import { GET_RES_URL, LAT_LANG_URL } from '../../utils/constant';
+import { GET_RES_URL, LAT_LANG_URL, proxyUrl } from '../../utils/constant';
 import WhatOnYourMind from "./what's_on_your_mind/WhatOnYourMind";
 import TopRestaurantsChains from './top_restaurant_chains/TopRestaurantsChains';
 import RestaurantsWithOnlineDelivery from './restaurant_with_online_delivery/RestaurantsWIthOnlineDelivery';
@@ -36,7 +36,7 @@ const Body = () => {
 
       dispatch(updateLatLng({ lat: latLngArr[0], lng: latLngArr[1] }));
     } else {
-      const latLagData = await fetch(LAT_LANG_URL + place_id);
+      const latLagData = await fetch(proxyUrl + LAT_LANG_URL + place_id);
       const latLangJson = await latLagData.json();
       url =
         GET_RES_URL +
@@ -51,8 +51,11 @@ const Body = () => {
       );
     }
 
-    const data = await fetch(url);
+    const data = await fetch(proxyUrl + url).catch((error) =>
+      console.error('Error:', error)
+    );
 
+    // console.log(data);
     const json = await data.json();
 
     setResData(json);

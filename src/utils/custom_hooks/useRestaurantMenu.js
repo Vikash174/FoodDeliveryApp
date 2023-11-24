@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MENU_URL } from '../constant';
+import { MENU_URL, proxyUrl } from '../constant';
 import { useSelector } from 'react-redux';
 
 const useRestaurantMenu = (resId) => {
@@ -12,7 +12,7 @@ const useRestaurantMenu = (resId) => {
   const fetchMenu = async () => {
     const URL = `${MENU_URL}lat=${latLangObj.latLng.lat}&lng=${latLangObj.latLng.lng}&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;
 
-    const data = await fetch(URL);
+    const data = await fetch(proxyUrl + URL);
     const json = await data.json();
     setResMenu(json);
   };

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { GET_RES_URL } from '../constant';
+import { GET_RES_URL, proxyUrl } from '../constant';
 import LatLangContext from './LatLangContext';
 
 const useResList = () => {
@@ -12,7 +12,7 @@ const useResList = () => {
   const fetchData = async () => {
     console.log(latLangObj);
 
-    const data = await fetch(GET_RES_URL);
+    const data = await fetch(proxyUrl + GET_RES_URL);
 
     const json = await data.json();
 

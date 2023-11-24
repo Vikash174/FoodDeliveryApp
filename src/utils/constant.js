@@ -16,3 +16,5 @@ export const LAT_LANG_URL =
   'https://www.swiggy.com/dapi/misc/address-recommend?place_id=';
 
 export const PRE_SEARCH = 'https://www.swiggy.com/dapi/landing/PRE_SEARCH?';
+
+export const proxyUrl = 'https://cors-anywhere.herokuapp.com/';

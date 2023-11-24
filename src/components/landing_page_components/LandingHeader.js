@@ -16,11 +16,6 @@ const HeaderNavAndHeadings = () => {
   const navigate = useNavigate();
   const [wordIndex, setWordIndex] = useState(0);
   useEffect(() => {
-    // setInterval(() => {
-    //   console.log('rerendered');
-    //   setWordIndex(wordIndex + 1);
-    // }, 3000);
-
     const timeout = setInterval(() => {
       setWordIndex(wordIndex + 1);
     }, 2000);
@@ -49,9 +44,7 @@ const HeaderNavAndHeadings = () => {
           `home/${position.coords.latitude}+${position.coords.longitude}`
         );
       },
-      (error) => {
-        console.log(error);
-      }
+      (error) => {}
     );
   };
 

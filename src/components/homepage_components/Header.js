@@ -82,7 +82,7 @@ const Header = (props) => {
           </Link>
         </li>
         <li className="font-medium hover:text-orange-500 cursor-pointer p-1">
-          <Link to="/help" className="flex items-center">
+          <Link to="/home/help" className="flex items-center">
             <span className="mx-2">
               <svg
                 class="_1GTCc"

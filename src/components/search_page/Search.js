@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { CDN_URL, PRE_SEARCH } from '../../utils/constant';
+import { CDN_URL, PRE_SEARCH, proxyUrl } from '../../utils/constant';
 import ResDishCard from './ResDishCard';
 
 const Search = () => {
   const [queryTerm, setQueryTerm] = useState('');
 
-  console.log(queryTerm + 'search page rendered');
   return (
     <div>
       <InputBox queryTerm={queryTerm} />
@@ -21,7 +20,7 @@ const InputBox = () => {
   const fetchSearchData = async (searchTerm) => {
     const URL = `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=${latLangObj.latLng.lat}&lng=${latLangObj.latLng.lng}&str=${searchTerm}&trackingId=undefined`;
 
-    const data = await fetch(URL);
+    const data = await fetch(proxyUrl + URL);
     const jsonData = await data.json();
     setSearchData(jsonData);
     console.log(searchData);
@@ -58,9 +57,7 @@ const PopularCuisines = (props) => {
   const fetchData = async () => {
     const URL =
       PRE_SEARCH + `lat=${latLangObj.latLng.lat}&lng=${latLangObj.latLng.lng}`;
-    const data = await fetch(URL);
-    // console.log(url, data);
-
+    const data = await fetch(proxyUrl + URL);
     const jsonData = await data.json();
 
     setData(jsonData);
