@@ -6,12 +6,14 @@ import { useSelector } from 'react-redux';
 const Header = (props) => {
   const [listElement, setListElement] = useState(null);
   const [showNavList, setShowNavList] = useState(false);
+  const [bodyElement, setBodyElement] = useState(null);
 
   //Subscribing to the store using Selector
   const cartItems = useSelector((store) => store.cart.items);
 
   useEffect(() => {
     setListElement(document.getElementById('nav-item-container'));
+    setBodyElement(document.getElementsByTagName('body')[0]);
   }, []);
   const hamburgerHandler = () => {
     if (!showNavList) {
@@ -23,8 +25,17 @@ const Header = (props) => {
     }
   };
 
+  const adderesClickHandler = () => {
+    // console.log('adderes clicked');
+    // bodyElement.classList.add('opacity-25', 'pointer-events-none');
+    // bodyElement.classList.add('opacity-25');
+  };
+
   return (
-    <div className="flex justify-evenly items-center shadow-sm sticky w-full top-0 bg-white z-10">
+    <div
+      id="body-div"
+      className="flex justify-evenly items-center shadow-sm sticky w-full top-0 bg-white z-10"
+    >
       <div className="flex items-center gap-4 p-3">
         <Link to={'/'}>
           <svg viewBox="0 0 559 825" height="49" width="34" fill="#fc8019">
@@ -49,7 +60,7 @@ const Header = (props) => {
             </defs>
           </svg>
         </Link>
-        <div className="cursor-pointer p-2">
+        <div className="cursor-pointer p-2" onClick={adderesClickHandler}>
           <span className="font-semibold underline underline-offset-8 hover:text-orange-500 text-sm p-2">
             Other
           </span>

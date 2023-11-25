@@ -41,6 +41,15 @@ const InputBox = () => {
       />
 
       <div className="absolute">
+        {searchData !== null && searchData.data.suggestions.length === 0 && (
+          <ResDishCard
+            searchData={{
+              cloudinaryId: '',
+              tagToDisplay: 'Nothing Found',
+              text: 'Service Unavailable for now'
+            }}
+          />
+        )}
         {searchData !== null &&
           searchData.data.suggestions.map((suggestion) => {
             return <ResDishCard searchData={suggestion} />;
@@ -67,6 +76,7 @@ const PopularCuisines = (props) => {
     fetchData();
   }, []);
 
+  console.log(data);
   return data === null ? (
     <h1>Loading...</h1>
   ) : (
@@ -75,16 +85,17 @@ const PopularCuisines = (props) => {
         <PopularCuisinesTitle />
       </div>
       <div className="flex">
-        {data.data.cards[1].card.card.gridElements.infoWithStyle.info.map(
-          (cuisine) => {
-            return (
-              <CuisinesImage
-                cuisine={cuisine}
-                setQueryTerm={props.setQueryTerm}
-              />
-            );
-          }
-        )}
+        {data.data.cards.length === 2 &&
+          data.data.cards[1].card.card.gridElements.infoWithStyle.info.map(
+            (cuisine) => {
+              return (
+                <CuisinesImage
+                  cuisine={cuisine}
+                  setQueryTerm={props.setQueryTerm}
+                />
+              );
+            }
+          )}
       </div>
     </div>
   );

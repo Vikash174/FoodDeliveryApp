@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { CDN_URL } from '/src/utils/constant.js';
+import { Link } from 'react-router-dom';
 
 const BestOffers = (props) => {
   const { cards } = props.resData.data;
-  // console.log(props.resData);
   const [bannerContainer, setBannerContainer] = useState(null);
   useEffect(() => {
     setBannerContainer(document.getElementById('banner-container'));
@@ -30,7 +30,11 @@ const BestOffers = (props) => {
         className="h-42 flex overflow-x-scroll scroll-smooth scrollbar-none"
       >
         {bestOfferBanners.map((banner) => {
-          return <Image key={banner.id} banner={banner} />;
+          return (
+            <Link to={`#`} key={banner.id}>
+              <Image banner={banner} />;
+            </Link>
+          );
         })}
       </div>
     </div>

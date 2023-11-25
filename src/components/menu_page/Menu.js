@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import useRestaurantMenu from '../../utils/custom_hooks/useRestaurantMenu';
 import Shimmer from '../homepage_components/Shimmer';
 import { useState } from 'react';
+import ShimmerMenu from './shimmer/ShimmerMenu';
 const Menu = () => {
   const { id } = useParams();
 
@@ -16,7 +17,7 @@ const Menu = () => {
   const dummy = 'Dummy data';
 
   if (menuData === null) {
-    return <Shimmer />;
+    return <ShimmerMenu />;
   }
   const resInfo = menuData?.data?.cards[0].card?.card.info;
   const accordionList =

@@ -15,7 +15,10 @@ const HeaderNavAndHeadings = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
   const [wordIndex, setWordIndex] = useState(0);
+  const [locationBlockDiv, setLocationDivBlock] = useState(null);
   useEffect(() => {
+    setLocationDivBlock(document.getElementById('location-block-div'));
+
     const timeout = setInterval(() => {
       setWordIndex(wordIndex + 1);
     }, 2000);
@@ -44,7 +47,9 @@ const HeaderNavAndHeadings = () => {
           `home/${position.coords.latitude}+${position.coords.longitude}`
         );
       },
-      (error) => {}
+      (error) => {
+        locationBlockDiv.classList.remove('hidden');
+      }
     );
   };
 
@@ -84,7 +89,7 @@ const HeaderNavAndHeadings = () => {
           onChange={inputHandler}
         />
         <button
-          className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[260px] sm:top-[10px]  md:left-[310px] md:top-[15px] lg:left-[310px] lg:top-[12px] xl:left-[340px] hover:bg-gray-200 flex items-center"
+          className="bg-gray-200 p-2 text-gray-500 sm:absolute sm:bg-transparent sm:left-[260px] sm:top-[10px]  md:left-[310px] md:top-[15px] lg:left-[310px] lg:top-[12px] xl:left-[310px] hover:bg-gray-200 flex items-center"
           onClick={locateMeHandler}
         >
           <img
@@ -98,12 +103,22 @@ const HeaderNavAndHeadings = () => {
         </button>
       </div>
 
-      <div className="absolute top-80 bg-white ">
+      <div
+        id="location-block-div"
+        className="absolute top-[30%] sm:top-[25%] md:top-[28%] lg:top-[38%] w-[400px] p-4 md:text-xl md:w-[450px] bg-red-500 text-white  whitespace-break-spaces hidden"
+      >
+        <span className="text-sm">
+          You have blocked Swiggy from tracking your location. To use this,
+          change your location settings in browser.
+        </span>
+      </div>
+
+      <div className="absolute top-[25%] md:top-[27%] lg:top-[38%] bg-white ">
         {listOfCities != undefined &&
           listOfCities.map((city) => {
             return (
               <Link key={city.place_id} to={'/home/' + city.place_id}>
-                <SuggestedPlace city={city} />;
+                <SuggestedPlace city={city} />
               </Link>
             );
           })}
@@ -135,9 +150,13 @@ const LandingLogoImage = () => {
 
 const SuggestedPlace = (props) => {
   const { description } = props.city;
-
+  console.log(description);
   return (
-    <div className="w-96 overflow-hidden whitespace-nowrap p-2 border-b ">
+    <div className="w-[100%] overflow-hidden whitespace-nowrap p-2 border-b flex items-center gap-2">
+      <img
+        className="w-5"
+        src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_location_on_48px-512.png"
+      />
       <span>{description}</span>
     </div>
   );
