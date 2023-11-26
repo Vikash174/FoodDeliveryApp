@@ -150,7 +150,7 @@ const LandingLogoImage = () => {
 
 const SuggestedPlace = (props) => {
   const { description } = props.city;
-  console.log(description);
+
   return (
     <div className="w-[100%] overflow-hidden whitespace-nowrap p-2 border-b flex items-center gap-2">
       <img

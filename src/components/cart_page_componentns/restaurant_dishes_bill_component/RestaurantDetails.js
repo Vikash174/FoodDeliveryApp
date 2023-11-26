@@ -3,7 +3,6 @@ import { CDN_URL } from '../../../utils/constant';
 const RestaurantDetails = (props) => {
   const { name, areaName, cloudinaryImageId } =
     props.resDetails.data.cards[0].card.card.info;
-  console.log(props.resDetails.data.cards[0].card.card.info);
   return (
     <div className="flex gap-2">
       <div className="res-image">

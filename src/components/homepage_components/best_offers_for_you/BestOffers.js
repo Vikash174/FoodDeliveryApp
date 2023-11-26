@@ -30,7 +30,7 @@ const BestOffers = (props) => {
         className="h-42 flex overflow-x-scroll scroll-smooth scrollbar-none"
       >
         {bestOfferBanners.map((banner) => {
-          return <Image banner={banner} />;
+          return <Image key={banner.id} banner={banner} />;
         })}
       </div>
     </div>
@@ -57,7 +57,6 @@ const Image = (props) => {
 
 export const NextPrevBtn = (props) => {
   const { element } = props;
-  // console.log(props);
   function findPosition(obj) {
     var currenttop = 0;
     if (obj.offsetParent) {
@@ -68,12 +67,9 @@ export const NextPrevBtn = (props) => {
     }
   }
   const PrevBtnHandler = () => {
-    console.log('perv button clicked');
     element.scrollLeft -= 290;
   };
   const nextBtnHandler = () => {
-    console.log('next button clicked');
-
     element.scrollLeft += 290;
   };
 

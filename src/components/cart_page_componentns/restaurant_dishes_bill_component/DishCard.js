@@ -1,6 +1,5 @@
 const DishCard = (props) => {
   const { isVeg, name, inStock, price, defaultPrice } = props.dish;
-  console.log(props.dish);
 
   return (
     <div className="flex items-center py-2 gap-2 mr-5 justify-between text-start">

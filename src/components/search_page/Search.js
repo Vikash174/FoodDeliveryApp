@@ -59,7 +59,6 @@ const PopularCuisines = (props) => {
     fetchData();
   }, []);
 
-  console.log(data);
   return data === null ? (
     <h1>Loading...</h1>
   ) : (

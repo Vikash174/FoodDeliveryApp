@@ -6,7 +6,6 @@ const WhatOnYourMind = (props) => {
   const { cards } = props.resData.data;
   const [whatOnYourMindDishes_container, setWhatOnYourMindDishes_container] =
     useState(null);
-  // console.log(props.resData);
 
   useEffect(() => {
     setWhatOnYourMindDishes_container(

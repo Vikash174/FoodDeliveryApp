@@ -11,7 +11,6 @@ const Offers = () => {
         https://www.swiggy.com/offers-near-me`);
       const backendHtmlString = await response.text();
 
-      console.log(backendHtmlString);
       return { __html: backendHtmlString };
     }
     createMarkup().then((result) => setHTML(result));

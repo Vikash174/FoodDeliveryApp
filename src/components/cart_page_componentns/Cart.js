@@ -66,7 +66,6 @@ const Cart = () => {
     });
 
     const jsonData = await data.json();
-    console.log(jsonData);
   };
 
   useEffect(() => {

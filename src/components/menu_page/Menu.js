@@ -27,8 +27,6 @@ const Menu = () => {
         'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
     );
 
-  // console.log(resInfo.id);
-
   return (
     <div className="md:mx-[20wh] lg:mx-[25vw] flex-col">
       <MenuHeader resInfo={resInfo} />
