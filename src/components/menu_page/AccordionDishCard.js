@@ -5,7 +5,6 @@ import { addItem } from '../../redux/slices/cartSlice';
 const AccordionDishCard = (props) => {
   const { isVeg, name, defaultPrice, price, description, imageId } =
     props.itemCard.card.info;
-  console.log(props);
 
   const dispatch = useDispatch();
 
@@ -14,7 +13,6 @@ const AccordionDishCard = (props) => {
 
     item.resId = props.resId;
     dispatch(addItem(item));
-    // console.log(item);
   };
   return (
     <div className="p-2 m-2 flex justify-between items-center border-b-[1px] border-gray-300">

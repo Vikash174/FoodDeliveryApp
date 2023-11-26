@@ -4,6 +4,7 @@ import Account from './Account';
 import CartInDetail from './restaurant_dishes_bill_component/CartInDetail';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import EmptyCart from './EmptyCart';
 useSelector;
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -73,11 +74,11 @@ const Cart = () => {
   }, []);
 
   return cartItems.length === 0 ? (
-    <h1>Cart Is Empty</h1>
+    <EmptyCart />
   ) : (
     <div className="h-[100vh] bg-gray-100">
       <div className="flex justify-center p-5 gap-5">
-        <div className="flex  flex-col">
+        <div className="flex-col hidden md:flex">
           <Account />
           {/* <Adderess />
           <Payment /> */}

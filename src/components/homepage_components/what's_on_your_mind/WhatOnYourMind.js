@@ -46,7 +46,7 @@ const WhatOnYourMind = (props) => {
 export const Title = (props) => {
   const { title } = props;
   return (
-    <span className="text-sm font-bold whitespace-nowrap md:text-lg md:py-2 ">
+    <span className="text-sm font-bold whitespace-nowrap md:text-lg md:py-2 lg:text-xl lg:mt-2 ">
       {title}
     </span>
   );

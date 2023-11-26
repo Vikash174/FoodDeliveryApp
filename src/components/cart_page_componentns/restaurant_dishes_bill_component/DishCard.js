@@ -1,12 +1,13 @@
 const DishCard = (props) => {
-  const { isVeg, name, inStock, price } = props.dish;
+  const { isVeg, name, inStock, price, defaultPrice } = props.dish;
+  console.log(props.dish);
 
   return (
     <div className="flex items-center py-2 gap-2 mr-5 justify-between text-start">
       <FoodTypeIndicator isVeg={isVeg} />
       <DishName name={name} />
       <QuantityController inStockQty={inStock} />
-      <TotalPrice price={price} />
+      <TotalPrice price={price} defaultPrice={defaultPrice} />
     </div>
   );
 };
@@ -36,8 +37,13 @@ export const QuantityController = ({ inStockQty }) => {
   );
 };
 
-const TotalPrice = ({ price }) => {
-  return <span className="text-xs text-start w-12"> ₹ {price / 100}</span>;
+const TotalPrice = ({ price, defaultPrice }) => {
+  return (
+    <span className="text-xs text-start w-12">
+      {' '}
+      ₹ {(price | defaultPrice) / 100}
+    </span>
+  );
 };
 
 export default DishCard;

@@ -18,3 +18,5 @@ export const LAT_LANG_URL =
 export const PRE_SEARCH = 'https://www.swiggy.com/dapi/landing/PRE_SEARCH?';
 
 export const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+
+export const HELP_SUPPORT_URL = 'https://www.swiggy.com/dapi/support/issues/';

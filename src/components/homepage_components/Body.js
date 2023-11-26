@@ -58,6 +58,16 @@ const Body = () => {
     // console.log(data);
     const json = await data.json();
 
+    const capitalizeFirstLetter = (string) => {
+      return string?.charAt(0)?.toUpperCase() + string?.slice(1);
+    };
+    if (latLngArr.length === 2) {
+      setLocation(
+        capitalizeFirstLetter(json?.data?.cards[12]?.card?.card?.citySlug) +
+          ', India'
+      );
+    }
+
     setResData(json);
   };
   // Conditional Rendering
@@ -70,25 +80,27 @@ const Body = () => {
     return <LocationUnserviceable />;
   }
   return (
-    <div className="mx-[10vw]">
-      <div className="my-2">
-        <BestOffers resData={resData} />
-      </div>
+    <>
+      <div className="mx-[10vw]">
+        <div className="my-2">
+          <BestOffers resData={resData} />
+        </div>
 
-      <div className="my-2">
-        <WhatOnYourMind resData={resData} />
-      </div>
+        <div className="my-2">
+          <WhatOnYourMind resData={resData} />
+        </div>
 
-      <div className="my-2">
-        <TopRestaurantsChains resData={resData} />
-      </div>
-      <div className="my-2">
-        <RestaurantsWithOnlineDelivery resData={resData} />
+        <div className="my-2">
+          <TopRestaurantsChains resData={resData} />
+        </div>
+        <div className="my-2">
+          <RestaurantsWithOnlineDelivery resData={resData} />
+        </div>
       </div>
       <div className="my-2">
         <LandingFooter />
       </div>
-    </div>
+    </>
   );
 };
 

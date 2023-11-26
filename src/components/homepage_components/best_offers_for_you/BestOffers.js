@@ -30,11 +30,7 @@ const BestOffers = (props) => {
         className="h-42 flex overflow-x-scroll scroll-smooth scrollbar-none"
       >
         {bestOfferBanners.map((banner) => {
-          return (
-            <Link to={`#`} key={banner.id}>
-              <Image banner={banner} />;
-            </Link>
-          );
+          return <Image banner={banner} />;
         })}
       </div>
     </div>

@@ -21,7 +21,7 @@ const ResImage = (props) => {
   return (
     <div>
       <img
-        className="h-[100px] w-[140px] min-h-[100px] min-w-[140px] md:min-w-[270px] md:min-h-[190px] rounded-lg md:h-[150px] md:w-[200px]"
+        className="h-[100px] w-[140px] min-h-[100px] min-w-[140px] md:min-w-[270px] md:min-h-[190px]  rounded-lg md:h-[150px] md:w-[200px] xl:min-w-[250px] 2xl:min-w-[220px]"
         src={CDN_URL + imgId}
       />
     </div>

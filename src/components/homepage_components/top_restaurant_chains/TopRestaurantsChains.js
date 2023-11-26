@@ -2,6 +2,7 @@ import { Title } from "../what's_on_your_mind/WhatOnYourMind";
 import ResCard from '../ResCard';
 import { NextPrevBtn } from '../best_offers_for_you/BestOffers';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const TopRestaurantsChains = (props) => {
   const { cards } = props.resData.data;
@@ -32,7 +33,11 @@ const TopRestaurantsChains = (props) => {
         className=" flex  overflow-x-scroll scrollbar-hide scroll-smooth"
       >
         {restaurantsList.map((res) => {
-          return <ResCard key={res.info.id} resData={res} />;
+          return (
+            <Link to={`/home/restaurants/${res.info.id}`} key={res.info.id}>
+              <ResCard resData={res} />
+            </Link>
+          );
         })}
       </div>
     </div>

@@ -12,7 +12,6 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Landing from './components/landing_page_components/Landing';
 import Search from './components/search_page/Search';
 import Offers from './components/offer_page/Offers';
-import BestOffersBody from './components/homepage_components/best_offers_for_you/BestOffersBody';
 
 const AppLayout = () => {
   const [location, setLocation] = useState('');
@@ -63,10 +62,6 @@ const router = createBrowserRouter([
       {
         path: '/home/restaurants/:id',
         element: <Menu />
-      },
-      {
-        path: '/home/:place_id/collections/:entity_id?collection_id=:col_id&tags=layout_ux4&type=rcv2',
-        element: <BestOffersBody />
       }
     ],
     errorElement: <Error />

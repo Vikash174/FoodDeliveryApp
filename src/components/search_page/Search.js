@@ -15,27 +15,10 @@ const Search = () => {
 };
 
 const InputBox = () => {
-  const latLangObj = useSelector((store) => store.latLng);
-  const [searchData, setSearchData] = useState(null);
-  const fetchSearchData = async (searchTerm) => {
-    const URL = `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=${latLangObj.latLng.lat}&lng=${latLangObj.latLng.lng}&str=${searchTerm}&trackingId=undefined`;
-
-    const data = await fetch(proxyUrl + URL);
-    const jsonData = await data.json();
-    setSearchData(jsonData);
-    console.log(searchData);
-  };
-
-  const searchBoxHandler = (e) => {
-    if (e.target.value.length > 1) {
-      fetchSearchData(e.target.value);
-    }
-  };
-
   return (
-    <div className="p-5 mx-[250px] text-center ">
+    <div className="p-3 text-center md:mx-[200px]">
       <input
-        className="p-4 border border-black w-full"
+        className="p-2 border border-black w-full"
         placeholder="search for restaurants and foods"
         onChange={searchBoxHandler}
       />
@@ -80,8 +63,8 @@ const PopularCuisines = (props) => {
   return data === null ? (
     <h1>Loading...</h1>
   ) : (
-    <div className="p-5 mx-[250px] text-center">
-      <div className="text-start p-5">
+    <div className="text-center my-10 md:mx-[200px]">
+      <div className="text-start">
         <PopularCuisinesTitle />
       </div>
       <div className="flex">
@@ -104,26 +87,16 @@ const PopularCuisines = (props) => {
 const PopularCuisinesTitle = () => {
   return (
     <div>
-      <h3 className="text-xl font-bold">Popular Cuisines</h3>
+      <h3 className="p-1 text-sm font-bold ">Popular Cuisines</h3>
     </div>
   );
 };
 
 const CuisinesImage = (props) => {
   const { imageId } = props.cuisine;
-  // co.log(props.cuisine);
-  const cuisineClickHandler = (cuisineName) => {
-    // console.log(cuisineName);
-    console.log(props.setQueryTerm());
-    props.setQueryTerm();
-  };
   return (
     <div>
-      <img
-        className="w-28 hover:cursor-pointer"
-        src={CDN_URL + imageId}
-        onClick={() => cuisineClickHandler('Biryani')}
-      />
+      <img className="w-28 hover:cursor-pointer" src={CDN_URL + imageId} />
     </div>
   );
 };
